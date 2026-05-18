@@ -17,17 +17,24 @@
 
 ![powerbi](img/power_bi.png)
 
-## Configuración de GIT
+## Configuración de Git
 
-git config --global user.name Maximiliano G. Coceres
+```bash
+$ git config --global user.name Maximiliano G. Coceres
 
-git config --global user.email maximiliano.g.coceres@gmail.com
+$ git config --global user.email maximiliano.g.coceres@gmail.com
+```
 
-## Configuración Github CLI autenticado
+## Configuración GitHub CLI autenticado
 
-gh auth status github.com ✓ Logged in to github.com account maxicoceres-data (keyring)
+```text
+$ gh auth status
+github.com
 
+✓ Logged in to github.com account maxicoceres-data (keyring)
 - Active account: true
 - Git operations protocol: https
 - Token: gho\_****************\*\*\*\*****************
 - Token scopes: 'gist', 'read:org', 'repo', 'workflow'
+
+```
