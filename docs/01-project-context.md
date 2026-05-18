@@ -72,19 +72,6 @@ Te lo paso en el **Issue #2 — Carga del dataset**. Es un único archivo `.sql`
 
 — _Briefing redactado por Claude, Tech Lead Data Analytics_
 
-### Sobre Mi
-
-```text
-Nombre: Maximiliano Coceres
-Rol: Practicante Data Analytics
-LinkedIn: https://www.linkedin.com/in/maximiliano-gabriel-coceres/
-email: maximiliano.g.coceres@gmail.com
-```
-
 ### Diagrama Schema
 
 ![sql](img/MySQL-Sample-Database-Schema.png)
-
-### Badges
-
-![Status](https://img.shields.io/badge/status-active-success) ![Sprint](https://img.shields.io/badge/sprint-0-blue)
