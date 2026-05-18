@@ -1,0 +1,58 @@
+# ============================================
+# .gitignore - TheBigTech Data Internship
+# ============================================
+
+# --- Datos crudos / sensibles ---
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+*.csv
+*.xlsx
+*.xls
+!docs/**/*.xlsx
+!docs/**/*.csv
+
+# --- Credenciales ---
+.env
+.env.local
+*.pem
+*.key
+credentials.json
+config.local.*
+
+# --- Power BI (archivos grandes) ---
+*.pbix.bak
+~$*.pbix
+.powerbi_cache/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+*.egg-info/
+
+# --- IDEs ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Logs ---
+*.log
+logs/
+
+# --- MySQL dumps grandes ---
+*.sql.gz
+*.dump
