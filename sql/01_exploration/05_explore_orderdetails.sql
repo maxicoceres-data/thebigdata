@@ -11,10 +11,10 @@
 
 use classicmodels;
 
--- Customers
+-- Orderdetails
 SELECT COUNT(*) FROM orderdetails;
 
--- nulos customers
+-- nulos Orderdetails
 SELECT
 SUM(CASE WHEN orderNumber IS NULL THEN 1 ELSE 0 END) AS nulls_orderNumber,
 SUM(CASE WHEN productCode IS NULL THEN 1 ELSE 0 END) AS nulls_productCode,
@@ -24,23 +24,23 @@ SUM(CASE WHEN orderLineNumber IS NULL THEN 1 ELSE 0 END) AS nulls_orderLineNumbe
 FROM orderdetails;
 
 
--- MAX Y MIN
+-- MAX Y MIN precio de cada orden 
 SELECT MAX(priceEach) AS max_priceEach, MIN(priceEach) AS min_priceEach
 FROM orderdetails;
 
 
--- top 5 valores categoricos
-SELECT quantityOrdered, COUNT(*) AS sta
+-- top 5 valores categoricos frecuencia de cantidad de ordenes
+
+SELECT quantityOrdered, COUNT(*) AS frecuency
 FROM orderdetails
 GROUP BY quantityOrdered
-ORDER BY sta DESC
-LIMIT 10;
+ORDER BY frecuency DESC
+LIMIT 5;
+
 
 
 -- CONCLUSIONES
--- Hay 326 datos en el tabla orders.
--- La tabla orders presenta 2 columnas de nulos.
--- nulls_shippedDate, seran fechas que aun no tienen entregas
--- nulls_comments, podemos corroborar que la mayor parte de ordenes el cliente no comenta sobre la misma.
--- Podemos comprobar que tenemos una base de datos de 2 años, comenzando el 01-06-2003 y finalizando el 31-05-2005
--- El top 6 de valores categoricos son correspondiente al estado de la orden (Utilizamos top 6 y no top 5 por que son 6 categorias). La mayoria de pedidos fueron entregados (303). Hya pocas incidencias de pedidos. 
+-- Hay 2996 datos en el tabla ordersdetails.
+-- La tabla ordersdetails no presenta columnas de nulos.
+-- Tenemos minimos y maximos de precios razonables, no hay outliers que puedan modificar los valores. 
+-- El top 5 de valores categoricos son correspondiente a la cantidad de productos que se piden por orden, y podemos ver por frecuencia de casos, que  la mayoria de los productos piden mas de 20 uds.

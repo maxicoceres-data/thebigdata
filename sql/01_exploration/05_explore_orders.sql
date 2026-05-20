@@ -11,10 +11,10 @@
 
 use classicmodels;
 
--- Customers
+-- Orderers
 SELECT COUNT(*) FROM orders;
 
--- nulos customers
+-- nulos Orderers
 SELECT
 SUM(CASE WHEN orderNumber IS NULL THEN 1 ELSE 0 END) AS nulls_orderNumber,
 SUM(CASE WHEN orderDate IS NULL THEN 1 ELSE 0 END) AS nulls_orderDate,
@@ -26,7 +26,7 @@ SUM(CASE WHEN customerNumber IS NULL THEN 1 ELSE 0 END) AS nulls_customerNumber
 FROM orders;
 
 
--- MAX Y MIN
+-- MAX Y MIN Order date and required date
 SELECT MAX(orderDate) AS max_orderDate, MIN(orderDate) AS min_orderDate
 FROM orders;
 
@@ -35,7 +35,7 @@ FROM orders;
 
 
 
--- top 5 valores categoricos
+-- top 5 valores categoricos estados de envio del producto
 SELECT status, COUNT(*) AS sta
 FROM orders
 GROUP BY status
