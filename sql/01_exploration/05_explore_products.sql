@@ -1,13 +1,10 @@
--- Issue #5
--- Exploración inicial de tablas
--- Consultas a las tablas principales de la base de datos
--- Voy a inspeccionar products.
--- objetivo: 
--- Cantidad de filas
--- Cantidad de columnas con valores nulos
--- rango temporal (max y min)
--- top 5 valores unicos de la columna categorica mas importante
-
+-- ============================================
+-- Archivo: 05_explore_products.sql
+-- Autor:   Maximiliano G. Coceres
+-- Fecha:   2026-05-20
+-- Issue:   #5
+-- Objetivo: Exploración inicial de la tabla products
+-- ============================================
 
 use classicmodels;
 
