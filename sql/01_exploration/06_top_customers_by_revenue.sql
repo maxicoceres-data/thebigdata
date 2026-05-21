@@ -6,11 +6,14 @@
 -- Objetivo: Top 10 clientes por facturación acumulada
 -- ============================================
 
+use classicmodels;
+
+CREATE VIEW vista_clientes_ordenes AS
 SELECT c.customerName AS Cliente, 
 c.customerNumber AS numero_de_cliente, 
 c.country AS Pais, 
 COUNT(DISTINCT o.orderNumber) AS total_ordenes,
-ROUND(AVG(od.quantityOrdered * od.priceEach),2) AS avg_order_value,
+ROUND(SUM(od.quantityOrdered * od.priceEach) / COUNT(DISTINCT o.orderNumber),2) AS avg_order_value,
 ROUND(SUM(od.quantityOrdered * od.priceEach),2) AS total_revenue
 FROM customers c 
 LEFT JOIN orders o ON c.customerNumber = o.customerNumber
@@ -23,8 +26,13 @@ ORDER BY total_revenue DESC
 LIMIT 10;
 
 
+SELECT ROUND((MAX(total_revenue)/SUM(total_revenue))*100,2) AS porcentaje
+FROM vista_clientes_ordenes;
+
 -- ============================================
 -- COMENTARIOS
 -- El cliente con mayor cantidad de ordenes es EURO + Shopping Channel con 22 ordenes.
--- El ticket promedio mas alto es de Muscle Machine Inc con solo 4 ordenes de 3706.54 euros.
--- 
+-- El ticket promedio mas alto es de AV Stores, Co. con solo 3 ordenes de 49470.03 euros.
+-- Solo 2 empresas superan las 10 ordenes de compra.
+-- EL resultado arroja que 'Euro+ Shopping Channel' es la empresa con mayor total de ingresos pero no con el mismo resultado, ya que al buscar los datos unicamente con valores Shipped, cambia la cantidad de ordenes. 
+-- El Ingreso de EURO + Shopping Channel aporta el 27% del revenue total. 
