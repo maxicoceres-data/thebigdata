@@ -1,5 +1,5 @@
 -- ============================================
--- Archivo: 05_top_customers.sql
+-- Archivo: 05_top_customers_by_revenue.sql
 -- Autor:   Maximiliano G. Coceres
 -- Fecha:   2026-05-20
 -- Issue:   #5
