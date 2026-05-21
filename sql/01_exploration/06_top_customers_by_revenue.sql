@@ -8,7 +8,7 @@
 
 use classicmodels;
 
-CREATE VIEW vista_clientes_ordenes AS
+
 SELECT c.customerName AS Cliente, 
 c.customerNumber AS numero_de_cliente, 
 c.country AS Pais, 
@@ -25,9 +25,27 @@ GROUP BY c.customerName,
 ORDER BY total_revenue DESC
 LIMIT 10;
 
-
+WITH top_customers AS(
+SELECT c.customerName AS Cliente, 
+c.customerNumber AS numero_de_cliente, 
+c.country AS Pais, 
+COUNT(DISTINCT o.orderNumber) AS total_ordenes,
+ROUND(SUM(od.quantityOrdered * od.priceEach) / COUNT(DISTINCT o.orderNumber),2) AS avg_order_value,
+ROUND(SUM(od.quantityOrdered * od.priceEach),2) AS total_revenue
+FROM customers c 
+LEFT JOIN orders o ON c.customerNumber = o.customerNumber
+LEFT JOIN orderdetails od ON o.orderNumber = od.orderNumber
+WHERE o.status = 'Shipped'
+GROUP BY c.customerName, 
+    c.customerNumber,
+    c.country
+ORDER BY total_revenue DESC
+LIMIT 10)
 SELECT ROUND((MAX(total_revenue)/SUM(total_revenue))*100,2) AS porcentaje
-FROM vista_clientes_ordenes;
+FROM top_customers;
+
+
+
 
 -- ============================================
 -- COMENTARIOS
