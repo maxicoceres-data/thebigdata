@@ -11,7 +11,7 @@ use classicmodels;
 SELECT DATE_FORMAT(o.orderDate, '%Y-%m') AS año_mes,
 SUM(od.quantityOrdered * od.priceEach) AS total_revenue,
 SUM(od.quantityOrdered) AS total_orders,
-ROUND((SUM(od.quantityOrdered * od.priceEach) / COUNT(DISTINCT o.orderNumber) * 100),2) AS avg_order_value
+ROUND((SUM(od.quantityOrdered * od.priceEach) / COUNT(DISTINCT o.orderNumber)),2) AS avg_order_value
 FROM orders o
 LEFT JOIN orderdetails od ON o.orderNumber = od.orderNumber
 WHERE o.status = 'Shipped'
