@@ -21,7 +21,7 @@ ORDER BY año_mes ASC;
 SELECT DATE_FORMAT(o.orderDate, '%Y-%m') AS año_mes,
 SUM(od.quantityOrdered * od.priceEach) AS total_revenue,
 SUM(od.quantityOrdered) AS total_orders,
-ROUND((SUM(od.quantityOrdered * od.priceEach) / COUNT(DISTINCT o.orderNumber) * 100),2) AS avg_order_value
+ROUND((SUM(od.quantityOrdered * od.priceEach) / COUNT(DISTINCT o.orderNumber)),2) AS avg_order_value
 FROM orders o
 LEFT JOIN orderdetails od ON o.orderNumber = od.orderNumber
 WHERE o.status = 'Shipped'
@@ -30,6 +30,6 @@ ORDER BY total_orders DESC;
 
 
 -- CONCLUSIONES
--- El mes pico de ventas es noviembre. En ambos años fue el mes con mayores ventas, el 2003 con 10574 y un promedio de '3327798.45' y el 2004 con 10208 con un promedio de '3018428.87'
+-- El mes pico de ventas es noviembre. En ambos años fue el mes con mayores ventas, el 2003 con 10574 y un promedio de '33277.98' y el 2004 con 10208 con un promedio de '30184.29'
 -- En noviembre se duplican las ventas. 
 -- Encontre una subida muy importante en el mes de diciembre ya que en el 2003, se habian vendido 2961 ordenes y en el 2004, 4808 ordenes. 
