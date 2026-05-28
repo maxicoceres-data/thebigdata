@@ -8,8 +8,6 @@
 
 use classicmodels;
 
-SELECT * FROM customers;
-
 WITH duplicados AS(
 SELECT customerName, country, city, COUNT(*) AS repetidos
 FROM customers
