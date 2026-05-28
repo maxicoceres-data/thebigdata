@@ -22,5 +22,24 @@ INNER JOIN duplicados d
   AND c.city = d.city
 ORDER BY d.customerName, c.country, c.city;
 
+
+-- clientes con creditLimit = 0
+CREATE VIEW  clientes_credit_0 AS
+SELECT * FROM customers
+WHERE creditLimit = 0;
+
+SELECT customerName AS Nombre FROM clientes_credit_0;
+
+SELECT COUNT(*)AS cantidad_cientes 
+FROM clientes_credit_0;
+
+
+-- Nombres genéricos o de prueba
+
+SELECT customerName FROM customers
+WHERE customerName LIKE '%Test%' AND '%Demo%' AND '%ACME%' AND '%acme%';
+
 -- CONCLUSIONES
 -- No surgen datos repetidos con el mismo nombre pero diferente pais o ciudad.
+-- Se hayaron 24 clientes con creditLimit 0. 
+-- No surgen datos con nombres genericos o de prueba (test, demo, acme, ACME)
